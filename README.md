@@ -25,15 +25,14 @@ latest-opt-test-softdev/
 │   ├── manage.py
 │   └── db.sqlite3          # Auto-generated SQLite database
 └── frontend/
-    └── task-manager/
-        ├── src/
-        │   ├── api/        # Individual Axios API call files
-        │   ├── hooks/      # Custom React hooks per operation
-        │   ├── components/ # TaskForm, TaskList, TaskItem
-        │   ├── types/      # TypeScript interfaces
-        │   └── App.tsx
-        ├── .env            # Frontend environment variables
-        └── package.json
+    ├── src/
+    │   ├── api/        # Individual Axios API call files
+    │   ├── hooks/      # Custom React hooks per operation
+    │   ├── components/ # TaskForm, TaskList, TaskItem
+    │   ├── types/      # TypeScript interfaces
+    │   └── App.tsx
+    ├── .env            # Frontend environment variables
+    └── package.json
 ```
 
 ---
@@ -105,7 +104,7 @@ Located at `backend/.env`:
 ### 1. Navigate to the frontend directory
 
 ```bash
-cd frontend/task-manager
+cd frontend
 ```
 
 ### 2. Install dependencies

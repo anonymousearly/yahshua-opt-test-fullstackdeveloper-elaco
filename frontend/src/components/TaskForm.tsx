@@ -5,9 +5,10 @@ interface Props {
   editingTask: Task | null;
   onSubmit: (data: TaskPayload) => Promise<void>;
   onCancel: () => void;
+  submitting?: boolean;
 }
 
-export default function TaskForm({ editingTask, onSubmit, onCancel }: Props) {
+export default function TaskForm({ editingTask, onSubmit, onCancel, submitting }: Props) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [titleError, setTitleError] = useState('');
@@ -29,6 +30,10 @@ export default function TaskForm({ editingTask, onSubmit, onCancel }: Props) {
     e.preventDefault();
     if (!title.trim()) {
       setTitleError('Title is required');
+      return;
+    }
+    if (title.trim().length < 3) {
+      setTitleError('Title must be at least 3 characters');
       return;
     }
     setTitleError('');
@@ -63,7 +68,14 @@ export default function TaskForm({ editingTask, onSubmit, onCancel }: Props) {
       </div>
       {error && <p className="form-error">{error}</p>}
       <div className="form-actions">
-        <button type="submit">{editingTask ? 'Save Changes' : 'Add Task'}</button>
+        <button type="submit" disabled={submitting}>
+          {submitting ? (
+            <>
+              <span className="spinner" />
+              Sending…
+            </>
+          ) : editingTask ? 'Save Changes' : 'Add Task'}
+        </button>
         {editingTask && (
           <button type="button" className="btn-cancel" onClick={onCancel}>
             Cancel

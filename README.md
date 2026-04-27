@@ -18,20 +18,46 @@ A full-stack Task Manager SPA built with Django REST Framework and React + TypeS
 
 ```
 latest-opt-test-softdev/
+├── README.md
 ├── backend/
-│   ├── root/               # Django project config (settings, urls)
-│   ├── tasks/              # Tasks app (models, serializers, views, urls)
-│   ├── .env                # Backend environment variables
+│   ├── root/
+│   │   ├── settings.py
+│   │   └── urls.py
+│   ├── tasks/
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── views.py
+│   │   ├── urls.py
+│   │   └── admin.py
+│   ├── .env
 │   ├── manage.py
-│   └── db.sqlite3          # Auto-generated SQLite database
+│   └── db.sqlite3
 └── frontend/
     ├── src/
-    │   ├── api/        # Individual Axios API call files
-    │   ├── hooks/      # Custom React hooks per operation
-    │   ├── components/ # TaskForm, TaskList, TaskItem
-    │   ├── types/      # TypeScript interfaces
-    │   └── App.tsx
-    ├── .env            # Frontend environment variables
+    │   ├── api/
+    │   │   ├── axiosClient.ts
+    │   │   ├── getTasks.ts
+    │   │   ├── createTask.ts
+    │   │   ├── getTaskById.ts
+    │   │   ├── updateTask.ts
+    │   │   ├── patchTask.ts
+    │   │   └── deleteTask.ts
+    │   ├── hooks/
+    │   │   ├── useGetTasks.ts
+    │   │   ├── useCreateTask.ts
+    │   │   ├── useUpdateTask.ts
+    │   │   ├── usePatchTask.ts
+    │   │   └── useDeleteTask.ts
+    │   ├── components/
+    │   │   ├── TaskForm.tsx
+    │   │   ├── TaskList.tsx
+    │   │   └── TaskItem.tsx
+    │   ├── types/
+    │   │   └── task.ts
+    │   ├── App.tsx
+    │   ├── index.css
+    │   └── main.tsx
+    ├── .env
     └── package.json
 ```
 
@@ -115,7 +141,7 @@ npm install
 
 ### 3. Configure environment variables
 
-Create a `.env` file in `frontend/task-manager/` (already provided):
+Create a `.env` file in `frontend/` (already provided):
 
 ```
 VITE_API_BASE_URL=http://localhost:8000
